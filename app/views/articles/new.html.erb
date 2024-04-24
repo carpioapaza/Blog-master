@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h2 class="mt-5 mb-4">Nuevo Blog</h2>
+
+      <%= form_with(model: @article, html: { class: "mt-4" }) do |form| %>
+        <% if @article.errors.any? %>
+          <div class="alert alert-danger">
+            <h4 class="alert-heading">No se pudo guardar los cambios</h4>
+            <ul>
+              <% @article.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="form-group">
+          <%= form.label :name, class: "form-label" %>
+          <%= form.text_field :name, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :content, class: "form-label" %>
+          <%= form.text_area :content, class: "form-control", rows: 5 %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :status, class: "form-label" %>
+          <div class="form-group">
+          <%= form.label :status, class: "form-label" %>
+          <%= form.select :status,
+                        Article.statuses.map { |key, value| [key, value] },
+                        { include_blank: 'Seleccionar', required: true },
+                        { class: "form-control" } %>
+            </div>  
+
+        <div class="form-group">
+          <%= form.label :picture, class: "form-label" %>
+          <%= form.file_field :picture, class: "form-control-file" %>
+        </div>
+
+        <%= form.submit 'Crear Blog', class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>

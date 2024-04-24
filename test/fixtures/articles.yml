@@ -1,0 +1,21 @@
+# == Schema Information
+#
+# Table name: articles
+#
+#  id         :bigint           not null, primary key
+#  content    :text
+#  name       :string
+#  status     :integer          default("inactive")
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+one:
+  name: MyString
+  content: MyText
+  status: 1
+
+two:
+  name: MyString
+  content: MyText
+  status: 1

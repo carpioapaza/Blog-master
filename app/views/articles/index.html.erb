@@ -1,0 +1,29 @@
+<h1>Blogs</h1>
+
+<%= link_to 'Crear Blog', new_article_path %>
+
+<table>
+  <thead>
+    <tr>
+      <th><input type="checkbox"></th>
+      <th>Nombre</th>
+      <th>Estado</th>
+      <th>Imagen</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @articles.each do |article| %>
+      <tr>
+        <th><input type="checkbox"></th>
+        <td><%= article.name %></td>
+        <td><%= article.status %></td>
+        <td data-controller="preview-image" data-preview-image-image-url-value="<%= url_for(article.picture) %>">
+          <button data-action="preview-image#preview">Previsualizar</button>
+        </td>
+        <td></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
